@@ -1,4 +1,4 @@
-name = "mocker"
+name = "moker"
 type = "webpack"
 account_id = ""
 workers_dev = true
