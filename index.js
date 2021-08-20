@@ -1,5 +1,5 @@
 import { handleEvent } from 'flareact'
-import WorkerScaffold, { basicAuth, cors, rewrite, robotsTxt } from '@arctome/worker-scaffold'
+import WorkerScaffold, { basicAuth, cors, rewrite, robotsTxt, faviconByBase64 } from '@arctome/worker-scaffold'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -12,6 +12,7 @@ const DEBUG = true
 
 addEventListener('fetch', event => {
   const app = new WorkerScaffold(event, DEBUG)
+  app.use(faviconByBase64('ignored'))
   app.use(cors(true))
   // all path should not be crawled by search engine
   app.use(robotsTxt({

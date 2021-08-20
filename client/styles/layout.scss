@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+html, body, #__flareact {
+    width: 100%;
+    height: 100%
+}
+.moker__off-canvas {
+    // flex-direction: column;
+}
+.moker__navbar {
+    padding: .4rem;
+    position: fixed;
+    width: 100%;
+    background: rgba(247,248,249,.65);
+}
+.moker__sidebar {
+    width: 4rem;
+    height: 100%;
+}
+.off-canvas-content.moker__off-canvas-content {
+    padding: 1rem;
+    padding-top: 4rem;
+}
