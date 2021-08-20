@@ -7,11 +7,38 @@
   "scripts": {
     "dev": "flareact dev",
     "build": "flareact build",
-    "deploy": "flareact publish"
+    "deploy": "flareact publish",
+    "prepare": "husky install",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags",
+    "lint": "eslint ./pages/**/*.js"
   },
   "dependencies": {
     "flareact": "^1.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "^7.0.0",
+    "lint-staged": ">=10",
+    "prettier-standard": "^16.4.1"
+  },
+  "engines": {
+    "node": "<16"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier-standard --lint"
+    ],
+    "*.js": "eslint --cache --fix"
   }
 }
