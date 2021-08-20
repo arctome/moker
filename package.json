@@ -11,9 +11,10 @@
     "prepare": "husky install",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push --follow-tags",
-    "lint": "eslint ./pages/**/*.js"
+    "lint": "eslint ./pages/**/*.js ./index.js"
   },
   "dependencies": {
+    "@arctome/worker-scaffold": "^1.0.5-canary.5",
     "flareact": "^1.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
@@ -30,6 +31,7 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.0",
     "lint-staged": ">=10",
+    "prettier-eslint": "^13.0.0",
     "prettier-standard": "^16.4.1"
   },
   "engines": {
