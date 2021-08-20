@@ -14,7 +14,8 @@
     "lint": "eslint ./pages/**/*.js ./index.js"
   },
   "dependencies": {
-    "@arctome/worker-scaffold": "^1.0.5-canary.5",
+    "@arctome/worker-scaffold": "^1.0.5",
+    "@tsndr/cloudflare-worker-jwt": "^1.1.2",
     "flareact": "^1.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"

@@ -1,5 +1,5 @@
 import { handleEvent } from 'flareact'
-import WorkerScaffold, { cors } from '@arctome/worker-scaffold'
+import WorkerScaffold, { basicAuth, cors, rewrite, robotsTxt } from '@arctome/worker-scaffold'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -8,11 +8,34 @@ import WorkerScaffold, { cors } from '@arctome/worker-scaffold'
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false
+const DEBUG = true
 
 addEventListener('fetch', event => {
-  const app = new WorkerScaffold(event)
+  const app = new WorkerScaffold(event, DEBUG)
   app.use(cors(true))
+  // all path should not be crawled by search engine
+  app.use(robotsTxt({
+    rules: [
+      {
+        userAgent: '*',
+        disallow: ['/']
+      }
+    ]
+  }))
+  /* eslint-disable no-undef */
+  app.use('/admin/(.*)', basicAuth({
+    USER_NAME: MOKER_USERNAME,
+    USER_PASS: MOKER_USERPASS
+  }))
+  app.use('/api/admin/(.*)', basicAuth({
+    USER_NAME: MOKER_USERNAME,
+    USER_PASS: MOKER_USERPASS
+  }))
+  /* eslint-enable no-undef */
+
+  app.use('/mock/:recordid', rewrite('/api/mock'))
+  app.use('/mock', rewrite('/api/mock'))
+
   app.use(event =>
     handleEvent(
       event,

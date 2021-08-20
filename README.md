@@ -26,3 +26,10 @@ If I can **MOCK** the required data without the develop API environment, I could
 ## Notice
 
 1. This project is heavily depend on [flareact](https://github.com/flareact/flareact), the issue of fiber has not been resolved yet, so your Node.js version should not be v16 or higher.
+
+## Development
+
+- [] JWT Auth for Client (Extensions and etc.)
+- [] Mock API support multiple `Content-Type`
+- [] Mock API admin panel
+- [] Show Mock APIs in `/docs` path
