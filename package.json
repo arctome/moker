@@ -36,7 +36,9 @@
     "postcss": "^8.3.6",
     "postcss-loader": "4.2.0",
     "prettier-eslint": "^13.0.0",
-    "prettier-standard": "^16.4.1"
+    "prettier-standard": "^16.4.1",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
   },
   "engines": {
     "node": "<16"
