@@ -9,14 +9,15 @@ export default function ComLayoutSidebar(props) {
             <div className="logo-holder">
                 <div className="logo-holder__wrapper">
                     <Link href="/admin">
-                        <img src="/logo.png" />
+                        <a><img src="/logo.png" /></a>
                     </Link>
                 </div>
             </div>
             <ul className="menu menu-nav">
-                <li className="menu-item"><Link href="/admin/browse"><span><Icon name="book" />Browse Records</span></Link></li>
-                <li className="menu-item"><Link href="/admin/settings"><span><Icon name="setting" />Settings</span></Link></li>
-                <li className="menu-item"><Link href="/admin/about"><span><Icon name="person" />About</span></Link></li>
+                <li className="menu-item"><Link href="/admin/browse"><a><Icon name="book" />Browse Records</a></Link></li>
+                <li className="menu-item"><Link href="/admin/settings"><a><Icon name="setting" />Settings</a></Link></li>
+                <li className="menu-item"><Link href="/admin/tokens"><a><Icon name="person" />Tokens</a></Link></li>
+                <li className="menu-item"><Link href="/admin/about"><a><Icon name="person" />About</a></Link></li>
             </ul>
         </div>
     )

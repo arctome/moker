@@ -14,16 +14,16 @@ body,
   background: rgba(247, 248, 249, 0.65);
 }
 .moker__sidebar {
-  width: 4rem;
+  width: 5rem;
   height: 100%;
-  li {
-    span {
-      list-style: none;
+  li.menu-item {
+    list-style: none;
+    a {
       display: flex;
       align-items: center;
       padding: 1rem;
       svg {
-          margin-right: .5rem;
+        margin-right: 0.5rem;
       }
     }
   }
@@ -34,8 +34,8 @@ body,
     align-items: center;
     justify-content: center;
     .logo-holder__wrapper {
-      width: 2rem;
-      height: 2rem;
+      width: 4rem;
+      height: 4rem;
       border-radius: 50%;
       overflow: hidden;
       img {
@@ -49,4 +49,12 @@ body,
 .off-canvas-content.moker__off-canvas-content {
   padding: 1rem;
   padding-top: 4rem;
+  height: 100%;
+  overflow: auto;
+}
+// btn > svg
+.btn > svg {
+  width: .8rem !important;
+  height: .8rem !important;
+  margin-right: .2rem;
 }

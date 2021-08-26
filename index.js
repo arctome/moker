@@ -23,7 +23,7 @@ addEventListener('fetch', event => {
       }
     ]
   }))
-  /* eslint-disable no-undef */
+  /* global MOKER_USERNAME, MOKER_USERPASS */
   app.use('/admin/(.*)', basicAuth({
     USER_NAME: MOKER_USERNAME,
     USER_PASS: MOKER_USERPASS
@@ -32,7 +32,6 @@ addEventListener('fetch', event => {
     USER_NAME: MOKER_USERNAME,
     USER_PASS: MOKER_USERPASS
   }))
-  /* eslint-enable no-undef */
 
   app.use('/mock/:recordid', rewrite('/api/mock'))
   app.use('/mock', rewrite('/api/mock'))

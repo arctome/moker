@@ -9,3 +9,10 @@ webpack_config = "node_modules/flareact/webpack"
 [site]
 bucket = "out"
 entry-point = "./"
+
+[vars]
+USE_CF_ACCESS = false
+USE_DURABLE_LIMITER = false
+MOKER_USERNAME = "moker"
+MOKER_USERPASS = "moker"
+MOKER_CLIENT_JWT_SECRET = "randomsecret"

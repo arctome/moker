@@ -1,0 +1,12 @@
+.admin-index-cards-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    .admin-index-card {
+        width: 33%;
+        min-width: 200px;
+    }
+    .admin-index-card + .admin-index-card {
+        margin-left: 10px;
+    }
+}

@@ -5,6 +5,7 @@ import 'spectre.css/dist/spectre-exp.min.css'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import '../styles/layout.scss'
+import '../styles/styled-scrollbar.scss'
 
 export default function ComLayout(props) {
     const [showSidebar, setShowSidebar] = useState(false);
