@@ -1,0 +1,16 @@
+#__flareact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main.mokerpage--login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    form {
+        width: 12rem;
+        height: auto;
+        min-height: 8rem;
+    }
+}
