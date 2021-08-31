@@ -120,3 +120,6 @@ dist
 # Cloudflare Worker
 /worker
 wrangler.toml
+
+# Miniflare local cache
+.mf
