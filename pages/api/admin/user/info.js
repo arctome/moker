@@ -8,6 +8,6 @@ export default async function ApiFetchUserInfo(event) {
     if(!user) return new Response(null, {status: 401})
     return {
         ok: 1,
-        name: user.username
+        name: user.name
     }
 }

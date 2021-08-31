@@ -29,9 +29,9 @@ const User = {
         if (!event || !event.request) throw new Error("[Entity - User] checkCookie with illegel request event!");
         let cookie = getCookie(event.request.headers.get("Cookie"), "MOKER_SESSION");
         if (!cookie) return false;
-        let username = await MOKER_SESSION_USER.get("t:" + cookie);
-        if (!username) return false;
-        return { username, cookie };
+        let name = await MOKER_SESSION_USER.get("t:" + cookie);
+        if (!name) return false;
+        return { name, cookie };
     },
     login: async function (username, password) {
         if (!username || !password) throw new Error("[Entity - User] login with no username or password!");
@@ -48,10 +48,10 @@ const User = {
         return this._cookieStr(token, this._config.maxAge);
     },
     logout: async function (event) {
-        let { username, cookie } = await this.checkCookie(event);
-        if (username) {
+        let { name, cookie } = await this.checkCookie(event);
+        if (name) {
             await Promise.all([
-                MOKER_SESSION_USER.delete("u:" + username),
+                MOKER_SESSION_USER.delete("u:" + name),
                 MOKER_SESSION_USER.delete("t:" + cookie)
             ])
             return this._cookieStr();
@@ -72,13 +72,16 @@ const User = {
         return true;
     },
     // remove api cannot remove `admin`, and only verified admin can remove other users
-    remove: async function (username, password) {
-        if (!username || !password) throw new Error("[Entity - User] createOrUpdate with no username or password!");
-        if (username !== 'admin') return false;
-        // check pass
-        let checkResult = await this.verify(username, password);
+    remove: async function (username) {
+        if (!username) throw new Error("[Entity - User] remove user with no username!");
+        let checkResult = await this.checkExist(username)
         if (!checkResult) return false;
-        await MOKER_STORAGE_USER.delete(username);
+        await MOKER_STORAGE_USER.delete(username).catch(e => {throw e});
+        // TODO: Remove all related resources, like session, JWT, records
+        return true;
+    },
+    list: async function() {
+        return await MOKER_STORAGE_USER.list()
     }
 }
 

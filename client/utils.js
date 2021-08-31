@@ -116,15 +116,14 @@ export function cFetch(url, option = {}) {
     }
     return fetch(url, fetchInit).then(async r => {
         if(r.status >= 500) {
-            return {
-                ok: 0,
-                msg: "Server request failed",
-                status: r.status
-            }
+            return Promise.reject("Server request failed (status "+r.status+")")
         }
         if(r.status === 401) {
             window.location.href = '/login'
             return Promise.reject("Unauthorized");
+        }
+        if(r.status === 405) {
+            return Promise.reject("Request method not allowed");
         }
         let response = await r.json();
         if(response.redirect) {

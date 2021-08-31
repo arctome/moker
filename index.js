@@ -24,9 +24,27 @@ addEventListener('fetch', event => {
       }
     ]
   }))
+  app.use('/login', async event => {
+    const checkRes = await User.checkCookie(event)
+    if (checkRes) {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: '/admin'
+        }
+      })
+    }
+  })
   app.use('/admin/(.*)', async event => {
     const checkRes = await User.checkCookie(event)
-    if (!checkRes) return Response.redirect(new URL(event.request.url).protocol + '//' + new URL(event.request.url).hostname + '/login')
+    if (!checkRes) {
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: '/login'
+        }
+      })
+    }
   })
   app.use('/api/admin/(.*)', async event => {
     const checkRes = await User.checkCookie(event)
@@ -34,7 +52,6 @@ addEventListener('fetch', event => {
   })
 
   app.use('/mock/:recordid', rewrite('/api/mock'))
-  app.use('/mock', rewrite('/api/mock'))
 
   app.use(event =>
     handleEvent(
@@ -43,6 +60,7 @@ addEventListener('fetch', event => {
       DEBUG
     )
   )
+
   try {
     event.respondWith(app.run())
   } catch (e) {
@@ -52,6 +70,7 @@ addEventListener('fetch', event => {
           status: 500
         })
       )
+      return
     }
     event.respondWith(new Response('Internal Error', { status: 500 }))
   }
