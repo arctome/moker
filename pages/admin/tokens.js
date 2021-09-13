@@ -4,7 +4,7 @@ import Layout from '../../client/layout/Layout'
 import '../../client/styles/admin-token-page.scss'
 import PropTypes from 'prop-types'
 
-function TokenOperationGroup (props) {
+function TokenOperationGroup(props) {
   if (!props.id) return <td>Error: This token is illegel.</td>
   return (
     <td className="token-table-btngroup">
@@ -33,14 +33,14 @@ TokenOperationGroup.propTypes = {
   id: PropTypes.string
 }
 
-export default function PageAdminTokens () {
+export default function PageAdminTokens() {
   return (
     <Layout>
       <div className="content">
         <section className="token-table-title">
           <h4>Tokens</h4>
           <div className="btngroup">
-            <button className="btn btn-primary"><Icon name="plus" /> Add</button>
+            <button class="btn btn-primary custom-icon-btn"><Icon name="plus" />Add Token</button>
           </div>
         </section>
         <section className="token-table-tbody">

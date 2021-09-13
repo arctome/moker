@@ -58,7 +58,19 @@ body,
 }
 // btn > svg
 .btn > svg {
-  width: .8rem !important;
-  height: .8rem !important;
-  margin-right: .2rem;
+  width: .8rem;
+  height: .8rem;
+}
+.btn.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn.custom-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > svg {
+    margin-right: .2rem;
+  }
 }

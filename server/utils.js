@@ -64,3 +64,11 @@ export function autoInjectUTime(data) {
         m_time: Date.now(),
     }
 }
+
+export function jsonRequestFilter(json, whitelist = []) {
+    if(typeof json !== 'object') return false;
+    if(typeof whitelist === 'string') whitelist = [whitelist];
+    const keysArr = Object.keys(json);
+    if(whitelist.sort().join(",") !== keysArr.sort().join(",")) return false;
+    return true;
+}

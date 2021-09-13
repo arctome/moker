@@ -26,7 +26,10 @@ const ClientJWT = {
         if (!isExist) return false;
         await MOKER_STORAGE_JWT.delete(token);
         return true;
-    }
+    },
+    // Original methods
+    verify: async (token) => { return await jwt.verify(token, MOKER_CLIENT_JWT_SECRET) },
+    decode: async (token) => { return await jwt.decode(token) }
 }
 
 export default ClientJWT
